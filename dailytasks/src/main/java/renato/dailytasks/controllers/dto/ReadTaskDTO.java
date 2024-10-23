@@ -1,10 +1,10 @@
-package renato.dailytasks.controllers;
+package renato.dailytasks.controllers.dto;
 
 import renato.dailytasks.domain.Task;
 
 public record ReadTaskDTO(String nome) {
 
-	ReadTaskDTO(Task task){
+	public ReadTaskDTO(Task task){
 		this(task.getNome());
 	}
 }

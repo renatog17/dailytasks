@@ -3,9 +3,9 @@ package renato.dailytasks.controllers.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public record CreateTaskDTO(
+public record UpdateTaskDTO(
 		@NotNull
 		@NotBlank
-		String nome) {
+		String name) {
 
 }

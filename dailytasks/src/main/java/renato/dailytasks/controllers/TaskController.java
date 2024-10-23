@@ -17,6 +17,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import jakarta.validation.Valid;
 import renato.dailytasks.controllers.dto.CreateTaskDTO;
+import renato.dailytasks.controllers.dto.ReadTaskDTO;
+import renato.dailytasks.controllers.dto.UpdateTaskDTO;
 import renato.dailytasks.domain.Task;
 import renato.dailytasks.repositories.TaskRepository;
 
