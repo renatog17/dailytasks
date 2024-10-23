@@ -54,11 +54,12 @@ public class TaskController {
 	
 	@PutMapping("/{id}")
 	@Transactional
-	public ResponseEntity<?> updateProject(@PathVariable Long id, @RequestBody UpdateTaskDTO updateTaskDTO){
+	public ResponseEntity<?> updateProject(@PathVariable Long id, @Valid @RequestBody UpdateTaskDTO updateTaskDTO){
 		Optional<Task> optionalTask = taskRepository.findById(id);
 		if (optionalTask.isPresent()) {
 			Task task = optionalTask.get();
 			task.setNome(updateTaskDTO.name());
+			return ResponseEntity.ok().body(new ReadTaskDTO(updateTaskDTO.name()));
 		}
 		return ResponseEntity.notFound().build();
 	}

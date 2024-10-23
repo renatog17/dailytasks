@@ -6,6 +6,6 @@ import jakarta.validation.constraints.NotNull;
 public record CreateTaskDTO(
 		@NotNull
 		@NotBlank
-		String nome) {
+		String name) {
 
 }

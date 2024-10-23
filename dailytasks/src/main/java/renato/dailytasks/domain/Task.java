@@ -12,7 +12,7 @@ import lombok.Setter;
 import lombok.ToString;
 import renato.dailytasks.controllers.dto.CreateTaskDTO;
 
-//@Entity
+@Entity
 //@NoArgsConstructor
 //@Setter
 //@Getter
@@ -23,19 +23,19 @@ public class Task {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
+	private String name;
 
 	public Task() {
 		super();
 	}
 
-	public Task(String nome) {
+	public Task(String name) {
 		super();
-		this.nome = nome;
+		this.name = name;
 	}
 
 	public Task(@Valid CreateTaskDTO createTaskDTO) {
-		this.nome = createTaskDTO.nome();
+		this.name = createTaskDTO.name();
 	}
 
 	public Long getId() {
@@ -47,11 +47,11 @@ public class Task {
 	}
 
 	public String getNome() {
-		return nome;
+		return name;
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.name = nome;
 	}
 
 }
