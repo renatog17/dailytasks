@@ -39,7 +39,7 @@ public class TaskController {
 		Task task = new Task(createTaskDTO);
 		
 		taskRepository.save(task);
-		URI uri = uriComponentsBuilder.path("/project/{id}").buildAndExpand(task.getId()).toUri();
+		URI uri = uriComponentsBuilder.path("/project/{id}").buildAndExpand(task.getTaskId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	

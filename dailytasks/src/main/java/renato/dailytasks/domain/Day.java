@@ -1,6 +1,8 @@
 package renato.dailytasks.domain;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -8,16 +10,26 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Day {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long dayId;
 	private String descricao;
 	@Column(unique = true)
 	private LocalDate date;
+	@ManyToMany
+	@JoinTable(
+			name="daily_register",
+			joinColumns = @JoinColumn(name="day_id"),
+			inverseJoinColumns = @JoinColumn(name="task_id")
+			)
+	private List<Task> tasks = new ArrayList<>();
 
 	public Day() {
 		super();
@@ -29,12 +41,12 @@ public class Day {
 		this.date = date;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getDayId() {
+		return dayId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setDayId(Long dayId) {
+		this.dayId = dayId;
 	}
 
 	public String getDescricao() {
@@ -55,7 +67,7 @@ public class Day {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(dayId);
 	}
 
 	@Override
@@ -67,12 +79,12 @@ public class Day {
 		if (getClass() != obj.getClass())
 			return false;
 		Day other = (Day) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(dayId, other.dayId);
 	}
 
 	@Override
 	public String toString() {
-		return "Day [id=" + id + ", descricao=" + descricao + ", date=" + date + "]";
+		return "Day [id=" + dayId + ", descricao=" + descricao + ", date=" + date + "]";
 	}
 
 }

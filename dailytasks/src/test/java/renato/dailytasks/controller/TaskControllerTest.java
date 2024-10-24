@@ -69,7 +69,7 @@ public class TaskControllerTest {
 		Task task = new Task("Teste");
 		taskRepository.save(task);
 		// act
-		mockMvc.perform(MockMvcRequestBuilders.get("/tasks/" + task.getId()))
+		mockMvc.perform(MockMvcRequestBuilders.get("/tasks/" + task.getTaskId()))
 				// assert
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Teste"));
@@ -91,7 +91,7 @@ public class TaskControllerTest {
 
 		UpdateTaskDTO updateTaskDTO = new UpdateTaskDTO("Conteúdo editado");
 		// act
-		mockMvc.perform(MockMvcRequestBuilders.put("/tasks/" + task.getId()).contentType(MediaType.APPLICATION_JSON)
+		mockMvc.perform(MockMvcRequestBuilders.put("/tasks/" + task.getTaskId()).contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(updateTaskDTO)))
 				// assert
 				.andExpect(MockMvcResultMatchers.status().isOk())
@@ -106,7 +106,7 @@ public class TaskControllerTest {
 
 		CreateTaskDTO createTaskDTO = new CreateTaskDTO("");
 		// act
-		mockMvc.perform(MockMvcRequestBuilders.put("/tasks/" + task.getId()).contentType(MediaType.APPLICATION_JSON)
+		mockMvc.perform(MockMvcRequestBuilders.put("/tasks/" + task.getTaskId()).contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(createTaskDTO)))
 				// assert
 				.andExpect(MockMvcResultMatchers.status().isBadRequest());
@@ -127,7 +127,7 @@ public class TaskControllerTest {
 		Task task = new Task("Teste");
 		taskRepository.save(task);
 		// act
-		mockMvc.perform(MockMvcRequestBuilders.delete("/tasks/" + task.getId()))
+		mockMvc.perform(MockMvcRequestBuilders.delete("/tasks/" + task.getTaskId()))
 				// assert
 				.andExpect(MockMvcResultMatchers.status().isNoContent());
 	}
