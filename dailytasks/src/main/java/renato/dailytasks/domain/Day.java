@@ -24,12 +24,9 @@ public class Day {
 	@Column(unique = true)
 	private LocalDate date;
 	@ManyToMany
-	@JoinTable(
-			name="daily_register",
-			joinColumns = @JoinColumn(name="day_id"),
-			inverseJoinColumns = @JoinColumn(name="task_id")
-			)
+	@JoinTable(name = "daily_register", joinColumns = @JoinColumn(name = "day_id"), inverseJoinColumns = @JoinColumn(name = "task_id"))
 	private List<Task> tasks = new ArrayList<>();
+
 
 	public Day() {
 		super();
@@ -41,6 +38,13 @@ public class Day {
 		this.date = date;
 	}
 
+	public List<Task> getTasks() {
+		return tasks;
+	}
+	
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
 	public Long getDayId() {
 		return dayId;
 	}

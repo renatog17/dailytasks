@@ -55,4 +55,15 @@ public class Task {
 		this.name = nome;
 	}
 
+
+	public List<Day> getDays() {
+		return days;
+	}
+
+	public void setDays(List<Day> days) {
+		this.days = days;
+	}
+	
+	
+
 }
